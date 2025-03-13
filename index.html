@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./landing/src/reset.css">
+    <link rel="stylesheet" href="./landing/src/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+    <title>Tonotes - For What Matters</title>
+</head>
+
+<body>
+<header class="header">
+    <div class="container mx-auto flex justify-between items-center pt-pb">
+        <div class="flex items-center font-['Rubik'] font-medium text-black items-center text-xl">
+            <img src="./img/tonotes-logo.svg" alt="Tonotes.com logo" class="w-60 h-24 object-contain">
+        </div>
+
+        <!-- <nav class="flex-grow nav">
+            <ul class="flex items-center space-x-14 media-md">
+                <li><a href="#" class="text-lg font-normal font-['Rubik'] text-shadow">Главная</a></li>
+                <li><a href="#" class="text-lg font-normal font-['Rubik'] text-shadow">О нас</a></li>
+                <li><a href="#" class="text-lg font-normal font-['Rubik'] text-shadow">Отзывы</a></li>
+            </ul>
+        </nav> -->
+
+        <div class="flex">
+            <a href="#" class="enter" class="enter-btn" style="font-weight: 500;">Log In</a>
+            <a href="#" class="to_try py-4 px-12" class="try-btn">Create an Account</a>
+            <!-- <div class="burger-menu" id="burger-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- Modal Window -->
+    <div class="modal" id="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="close">&times;</span>
+            <div class="form">
+                <div class="form-panel one" >
+                    <div class="form-header">
+                        <h1>Welcome Back</h1>
+                    </div>
+                    <div class="form-content">
+                        <form id="login-form">
+                            <div class="form-group">
+                                <input id="login-email" type="email" name="email" placeholder="Email Address" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input id="login-password" type="password" name="password" placeholder="Password" required="required" />
+                            </div>
+                            <div id="login-error" class="border border-red-500 p-4 rounded mb-4 hidden"></div>
+                            <div class="form-group">
+                                <button type="button" id="login-btn-form">Login</button>
+                            </div>
+                            <div class="form-group">
+                                <p>Don't have an account? <br><span class="highlight" id="register-btn">Register</span></p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-footer">
+                        <p>Forgot password? <a class="highlight" href="request-password.html">Reset password</a></p><br>
+                        <p><a href="info/terms.html" target="_blank" class="form-footer-text">Terms of Use</a> | <a href="info/privacy.html" target="_blank" class="form-footer-text">Privacy Policy</a></p>
+                    </div>
+                </div>
+                <div class="form-panel two" style="display: none;">
+                    <div class="form-header">
+                        <h1>Sign Up & Begin</h1>
+                    </div>
+                    <div class="form-content">
+                        <form id="register-form">
+                            <div class="form-group">
+                                <input id="reg-email" type="email" name="email" placeholder="Email Address" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input id="reg-password" type="password" name="password" placeholder="Password" required="required" />
+                            </div>
+
+                            <div class="form-group">
+                                <input id="reg-confirm-password" type="password" name="confirm-password" placeholder="Confirm Password" required="required" />
+                            </div>
+
+                            <div id="registration-error" class="border border-red-500 p-4 rounded mb-4 hidden"></div>
+                            <div id="registration-success" class="border border-green-500 p-4 rounded mb-4 hidden"></div>
+
+                            <div class="form-group">
+                                <button id="register-btn-form">Register</button>
+                            </div>
+                            <div class="form-group">
+                                <p>Already have an account? <span class="highlight" id="login-btn">Login</span></p>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="form-footer">
+                        <p><a href="info/terms.html" target="_blank" class="form-footer-text">Terms of Use</a> | <a href="info/privacy.html" target="_blank" class="form-footer-text">Privacy Policy</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="menu">
+    <div class="container flex items-center">
+        <div class="block__menu-one">
+            <h1 class="font-['Rubik'] font-medium h1">Access your notes instantly, anytime, on any device.</h1>
+            <p class="font-['Rubik'] font-normal p">Stay organized with a service that keeps all your notes in one place, on all your devices.</p>
+            <a class="to_try py-4 px-12 cursor-pointer">Start Now</a>
+        </div>
+        <div class="block__menu-tho mr">
+            <img class="menu-img" src="./landing/src/img/nother-try.png" alt="">
+        </div>
+    </div>
+</section>
+
+<section class="information">
+    <h3 class=" text-center h3 mx-auto px-[15px]">Organize your thoughts, manage projects, and share your ideas effortlessly.</h3>
+    <div class="content__info flex">
+        <div class="items__info">
+            <img class="items-center" src="./landing/src/img/krug.svg" alt="">
+            <h2 class="title__card-info">Unified Workspace</h2>
+            <h2 class="subtitle__card-info">While editing notes, you can instantly open another folder or note.</h2>
+        </div>
+
+        <div class="items__info">
+            <img class="items-center" src="./landing/src/img/zvezda.svg" alt="">
+            <h2 class="title__card-info">Simple Management</h2>
+            <h2 class="subtitle__card-info">The design is crafted to be intuitive and easy to use for everyone.</h2>
+        </div>
+
+        <div class="items__info">
+            <img class="items-center" src="./landing/src/img/mln.svg" alt="">
+            <h2 class="title__card-info">Fast Performance</h2>
+            <h2 class="subtitle__card-info">This service runs smoothly on any device thanks to high-quality development.</h2>
+        </div>
+    </div>
+</section>
+
+<section class="reviews">
+    <h3 class="text-center h3-r mx-auto">Trusted by <span class="span">10+</span> people worldwide (mostly my friends).</h3>
+    <div class="content__reviews flex flex-wrap">
+
+        <div class="card__block-reviews-one flex justify-center">
+            <div class="card__reviews-msg rounded-2xl">
+                <div class="card-content__reviews-msg">
+                    <h3 class="title__card-reviews"><span class="span">The best tool</span> for organizing ideas and strategies.
+                        Fast search, convenient tags, seamless syncing, everything works perfectly.</h3>
+                    <div class="profile-use flex">
+                        <img src="./landing/src/img/alex.svg" alt="">
+                        <h4 class="name-card__reviews">John D. <br>
+                            <span class="subtext-card__reviews">Pickle Jar Curator</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card__reviews-msg rounded-2xl">
+                <div class="card-content__reviews-msg">
+                    <h3 class="title__card-reviews">I capture key thoughts after meetings and quickly find what I need.
+                        <span class="span">Minimalism and convenience</span> exactly what’s needed in business.</h3>
+                    <div class="profile-use flex">
+                        <img src="./landing/src/img/marina.svg" alt="">
+                        <h4 class="name-card__reviews">Sophia T. <br>
+                            <span class="subtext-card__reviews">Full-Time Daydreamer</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card__reviews-msg rounded-2xl">
+                <div class="card-content__reviews-msg">
+                    <h3 class="title__card-reviews">A reliable tool for both work and personal notes.
+                        <span class="span">Minimal clicks maximum efficiency.</span></h3>
+                    <div class="profile-use flex">
+                        <img src="./landing/src/img/igor.svg" alt="">
+                        <h4 class="name-card__reviews">Daniel K. <br>
+                            <span class="subtext-card__reviews">Snack Break Enthusiast</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card__block-reviews-tho flex">
+            <div class="card__reviews-msg rounded-2xl">
+                <div class="card-content__reviews-msg">
+                    <h3 class="title__card-reviews"><span class="span">Perfect order</span> in my notes.
+                        Attachments, reminders, structure — it helps me stay focused on what matters.</h3>
+                    <div class="profile-use flex">
+                        <img src="./landing/src/img/viktor.svg" alt="">
+                        <h4 class="name-card__reviews">Mark F. <br>
+                            <span class="subtext-card__reviews">Real-Life Monopoly Player</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card__reviews-msg rounded-2xl">
+                <div class="card-content__reviews-msg">
+                    <h3 class="title__card-reviews"><span class="span">Fast</span>, <span class="span">simple</span>,
+                        and distraction-free. Everything I need to manage ideas and tasks.</h3>
+                    <div class="profile-use flex">
+                        <img src="./landing/src/img/elena.svg" alt="">
+                        <h4 class="name-card__reviews">Emma R.<br>
+                            <span class="subtext-card__reviews">Chief Coffee Drinker</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card__reviews-msg rounded-2xl">
+                <div class="card-content__reviews-msg">
+                    <h3 class="title__card-reviews">The perfect balance of <span class="span">functionality and convenience</span>.
+                        I jot down ideas, set tasks—nothing gets lost.</h3>
+                    <div class="profile-use flex">
+                        <img src="./landing/src/img/sergey.svg" alt="">
+                        <h4 class="name-card__reviews">Lucas M. <br>
+                            <span class="subtext-card__reviews">Just a good guy</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container mx-auto flex justify-between items-center pt-pb">
+        <div class="flex items-center">
+            Crafted with ❤️ and enthusiasm by &nbsp;<span class="font-semibold">tonotes.com</span> &nbsp;
+        </div>
+
+        <nav class="flex-grow foma">
+            <!-- <ul class="flex justify-center items-center space-x-14">
+                <li><a class="footer-src" href="#" class="opacity-70"><img src="./landing/src/img/twitter.svg" alt="twitter"></a></li>
+                <li><a class="footer-src" href="#" class="opacity-70"><img src="./landing/src/img/instagram.svg" alt="instagram"></a></li>
+                <li><a class="footer-src" href="#" class="opacity-70"><img src="./landing/src/img/facebook.svg" alt="facebook"></a></li>
+            </ul> -->
+        </nav>
+        <div class="flex">
+            <a href="#" class="enter opacity-70" class="enter-btn">Enter Your Account</a>
+            <a href="#" class="to_try py-4 px-12" class="to-try">Sign Up & Begin</a>
+        </div>
+    </div>
+</footer>
+
+<script src="./landing/src/script.js"></script>
+</body>
+
+</html>

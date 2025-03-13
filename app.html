@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Tonotes - Think. Write. Save.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+
+</head>
+<body class="">
+<div class="notes d-flex">
+    <aside>
+        <div class="aside-header d-flex justify-content-between align-items-center">
+            <a href="index.html" class="title text-decoration-none">NOtes</a>
+            <!--            <button class="btn btn-add p-0">-->
+            <!--                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">-->
+            <!--                    <path d="M6 11L16 1" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>-->
+            <!--                    <path d="M15 8V14C15 15.1046 14.1046 16 13 16H3C1.89543 16 1 15.1046 1 14V4C1 2.89543 1.89543 2 3 2H9"-->
+            <!--                          stroke="#141414" stroke-width="1.5"/>-->
+            <!--                </svg>-->
+            <!--            </button>-->
+        </div>
+        <div class="aside-search">
+            <form action="" class="search position-relative">
+                <input type="text" placeholder="Search notes" name="search" id="search">
+                <span class="search-icon"></span>
+                <span class="cancel-search-icon"></span>
+            </form>
+        </div>
+
+        <div class="search-results" style="display: none">
+            <h2 class="list-title">Search results</h2>
+            <ul class="notes-list p-0 d-flex flex-column" id="list-search-results">
+
+            </ul>
+        </div>
+        <div class="last-notes">
+            <h2 class="list-title">Latest notes</h2>
+            <ul class="notes-list p-0 d-flex flex-column" id="latest-notes">
+            </ul>
+        </div>
+        <div class="notes-folders">
+            <h2 class="list-title d-flex justify-content-between align-items-center">Folders
+                <button class="btn add-folder p-0" id="add-folder-button"></button>
+            </h2>
+            <ul class="p-0 flex-column" id="add-folder-container" style="display: none">
+                <li class="abc">
+                    <div href="#" class="note-link note-new-folder active text-decoration-none">
+                        <span class="note-folder-icon"></span>
+                        <input type="text" placeholder="Folder name" class="new-folder">
+                        <span class="new-folder-name"></span>
+                        <button class="btn btn-folder-check p-0" id="create-folder-button">
+                            <svg class="svg-icon" width="16" height="11" viewBox="0 0 16 11" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.4" d="M1 5L6 10L15 1" stroke="currentColor" stroke-width="1.5"
+                                      stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+            <ul id="folders-list" class="notes-list p-0 d-flex flex-column">
+
+            </ul>
+        </div>
+        <div class="notes-other">
+            <h2 class="list-title">Other <span class="folder-icon"></span></h2>
+            <ul class="notes-list p-0 d-flex flex-column">
+                <li class="note-item">
+                    <a href="#" class="note-link text-decoration-none"><span class="favorite-icon"></span>Favourites</a>
+                </li>
+                <li class="note-item">
+                    <a href="#" class="note-link text-decoration-none" data-bs-toggle="modal"
+                       data-bs-target="#modal-settings"> <span class="settings-icon"></span>Settings</a>
+                </li>
+                <li class="note-item">
+                    <a href="#" class="note-link text-decoration-none"><span class="basket-icon"></span>Trash</a>
+                </li>
+                <li class="note-item">
+                    <a href="#" class="note-link text-decoration-none"><span class="archive-icon"></span>Archive</a>
+                </li>
+
+            </ul>
+        </div>
+    </aside>
+    <aside class="aside-opened d-none">
+        <div class="aside-header d-flex justify-content-between align-items-center">
+            <button class="btn btn-back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
+                    <path d="M19 7L1 7M1 7L7.3 13M1 7L7.3 1" stroke="#141414" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <h2 class="title" id="folder-name-above-notes-list">Личное</h2>
+            <!--            <button class="btn btn-filter p-0">-->
+            <!--                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" fill="none">-->
+            <!--                    <g opacity="0.2">-->
+            <!--                        <path d="M10 1V15" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>-->
+            <!--                        <circle cx="10" cy="11" r="1.5" fill="#F8F8F8" stroke="#141414"/>-->
+            <!--                        <path d="M2 1V15" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>-->
+            <!--                        <circle cx="2" cy="5" r="1.5" fill="#F8F8F8" stroke="#141414"/>-->
+            <!--                    </g>-->
+            <!--                </svg>-->
+            <!--            </button>-->
+            <button class="btn btn-add p-0" id="create-new-note-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                    <path d="M6 11L16 1" stroke="#141414" stroke-width="1.5" stroke-linecap="round"></path>
+                    <path d="M15 8V14C15 15.1046 14.1046 16 13 16H3C1.89543 16 1 15.1046 1 14V4C1 2.89543 1.89543 2 3 2H9"
+                          stroke="#141414" stroke-width="1.5"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="notes-filter d-flex">
+            <h4>All notes</h4>
+            <button class="btn btn-filter sort-by-title"> a-z <span class="arrow-icon">
+                <svg id="sort-by-title-svg" xmlns="http://www.w3.org/2000/svg" width="7" height="4" viewBox="0 0 7 4"
+                     fill="none">
+                            <path opacity="0.4" d="M3.5 4L0.468911 0.25L6.53109 0.25L3.5 4Z" fill="#141414"/>
+                 </svg>
+                </span>
+            </button>
+            <button class="btn btn-filter sort-by-date"> date <span class="arrow-icon">
+                <svg id="sort-by-date-svg" xmlns="http://www.w3.org/2000/svg" width="7" height="4" viewBox="0 0 7 4"
+                     fill="none">
+                            <path opacity="0.4" d="M3.5 4L0.468911 0.25L6.53109 0.25L3.5 4Z" fill="#141414"/>
+                 </svg>
+                </span>
+            </button>
+        </div>
+        <div id="note-list-container" class="notes-in-folder">
+
+        </div>
+    </aside>
+
+    <main class="d-flex  align-items-center justify-content-center" id="editor-note-container">
+        <div class="note-content d-none flex-column justify-content-between">
+            <div class="note-info">
+                <div class="note-title-block d-flex justify-content-between">
+                    <h2 class="title" id="note-title-editor" contenteditable="true"></h2>
+                    <ul class="edit-list d-flex micro-edit-actionbar">
+                        <li class="edit-item"><button data-command="bold" class="btn btn-bold"></button></li>
+                        <li class="edit-item"><button data-command="italic" class="btn btn-italic"></button></li>
+                        <li class="edit-item"><button data-command="underline" class="btn btn-underline"></button></li>
+                        <li class="edit-item"><button data-command="strikeThrough" class="btn btn-line-trough"></button></li>
+                        <li class="edit-item">
+                            <button class="btn btn-headings">
+                            </button>
+                            <ul class="heading-list">
+                                <li class="heading-item heading-h1"><button data-command="formatBlock" data-value="<h2>" class="button-like-span">Heading 1</button></li>
+                                <li class="heading-item heading-h2"><button data-command="formatBlock" data-value="<h3>" class="button-like-span">Heading 2</button></li>
+                            </ul>
+                        </li>
+<!--                        <li class="edit-item"><button class="btn btn-symbols"></button></li>-->
+                        <li class="edit-item"><button data-command="formatBlock" data-value="<blockquote>" class="btn btn-quote"></button></li>
+                        <li class="edit-item"><button data-command="insertOrderedList" class="btn btn-list-numeric"></button></li>
+                        <li class="edit-item"><button data-command="insertUnorderedList" class="btn btn-list-circle"></button></li>
+                        <li class="edit-item">
+                            <button class="btn btn-table">
+                            </button>
+                            <div class="toolbar-editor-table table-list">
+                                <div class="table-row d-flex">
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                </div>
+                                <div class="table-row d-flex">
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                </div>
+                                <div class="table-row d-flex">
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                </div>
+                                <div class="table-row d-flex">
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                </div>
+                                <div class="table-row d-flex">
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                </div>
+                                <div class="table-row d-flex">
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                    <div class="table-item" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="edit-item"><button data-command="insertHorizontalRule" class="btn btn-horizontal-line"></button></li>
+                        <li class="edit-item"><button data-command="createLink" class="btn btn-link"></button></li>
+                        <li class="edit-item"><button data-command="formatBlock" data-value="<pre>" class="btn btn-code"></button></li>
+                        <li class="edit-item"><button class="btn btn-full-screen"></button></li>
+                    </ul>
+                </div>
+                <div class="note-text note-micro-content" id="pilll" contenteditable="true">
+
+                </div>
+
+                <script>
+
+                </script>
+
+                <!--                <div class="note-text" id="note-content-editor" contenteditable="true">-->
+
+                <!--                </div>-->
+            </div>
+            <!--            <div class="note-input note-input-with-tag d-flex align-items-center">-->
+            <!--&lt;!&ndash;                <div class="tag">#планы</div>&ndash;&gt;-->
+            <!--                <textarea placeholder="Add tag..."></textarea>-->
+            <!--            </div>-->
+        </div>
+
+        <div class="empty-body d-flex justify-content-center flex-column align-items-center">
+            <div class="file-icon"></div>
+            <h1 class="empty-title text-center">Select a Note to View</h1>
+            <p class="empty-text text-center">
+                Choose a note from the list on the left to see its content, or create a new note to get started.
+            </p>
+        </div>
+    </main>
+</div>
+<div class="modal fade" id="modal-settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Settings</h5>
+                <button type="button" class="btn close p-0" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 29" fill="none">
+                            <path d="M8 21.9998L22.1421 7.85762" stroke="#141414" stroke-width="2"
+                                  stroke-linecap="round"/>
+                            <path d="M22 21.9998L7.85786 7.85762" stroke="#141414" stroke-width="2"
+                                  stroke-linecap="round"/>
+                            </svg>
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--                <div class="user d-flex align-items-center">-->
+                <!--                    <div class="user-img">-->
+                <!--                        <img src="img/user.png" alt="user">-->
+                <!--                    </div>-->
+                <!--                    <h2 class="user-title">Андрей Макан</h2>-->
+                <!--                    <button class="btn btn-filter p-0">-->
+                <!--                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" fill="none">-->
+                <!--                            <g opacity="0.2">-->
+                <!--                                <path d="M10 1V15" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>-->
+                <!--                                <circle cx="10" cy="11" r="1.5" fill="#F8F8F8" stroke="#141414"/>-->
+                <!--                                <path d="M2 1V15" stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>-->
+                <!--                                <circle cx="2" cy="5" r="1.5" fill="#F8F8F8" stroke="#141414"/>-->
+                <!--                            </g>-->
+                <!--                        </svg>-->
+                <!--                    </button>-->
+                <!--                </div>-->
+                <div class="site-theme  d-flex justify-content-between align-items-center">
+                    <div class="theme-name">Dark</div>
+                    <div class="dropdown">
+                        <button class="btn  dropdown-toggle p-0" type="button" id="dropdownMenuButton"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Light
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#" data-name="dark">Dark</a>
+                            <a class="dropdown-item dropdown-item-selected" data-name="" href="#">Light</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="settings-links d-flex align-items-center justify-content-between">
+                    <a href="#" class="d-flex align-items-center ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+                            <path d="M1 9V12C1 13.1046 1.89543 14 3 14H13C14.1046 14 15 13.1046 15 12V9"
+                                  stroke="#141414" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M8 1V10M8 10L5 7M8 10L11 7" stroke="#141414" stroke-width="1.5"
+                                  stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Import/Export Notes
+                    </a>
+                    <a href="/logout" class="logout ">
+                        Logout
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="chatgpt" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title d-flex" id=""><span>#gpt</span> Напиши сочинение на тему: “Трудно ли быть белой
+                    вороной”</h5>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
+                <button type="button" class="btn btn-primary">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="toast-container" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;"></div>
+
+<style>
+    #toast-container {
+        min-width: 250px;
+        max-width: 350px;
+    }
+
+    .toast {
+        margin-bottom: 0.5rem;
+        background-color: white;
+        border: none;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .toast.show {
+        display: block;
+        opacity: 1;
+    }
+
+    .bg-success {
+        background-color: #198754 !important;
+    }
+
+    .bg-danger {
+        background-color: #dc3545 !important;
+    }
+
+    .bg-warning {
+        background-color: #ffc107 !important;
+    }
+
+    .bg-info {
+        background-color: #0dcaf0 !important;
+    }
+</style>
+
+
+<div class="modal fade" id="modal-remove" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete note</h5>
+
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete note ?</p>
+                <p><strong id="model-remove-note-title"></strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="modal-close-button" class="btn btn-secondary" data-dismiss="modal">Cancel
+                </button>
+                <button type="button" id="modal-remove-button" class="btn btn-primary">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap.bundle.min.js?v=${version}"></script>
+<script src="js/jquery-3.7.1.min.js?v=${version}"></script>
+<script src="js/main.js?v=${version}"></script>
+<script type="module" src="/app.js?v=${version}"></script>
+
+<script src="editor/pell.js"></script>
+<link rel="stylesheet" href="editor/pell.css">
+</body>
+</html>
